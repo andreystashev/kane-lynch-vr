@@ -7,11 +7,11 @@
 - A connected PC VR headset, tracked controllers and the matching PC VR software.
 - A compatible graphics driver. DXVK also requires Vulkan support.
 
-**The Steam version (App 8080) is the primary tested edition.** Some other verified game builds are accepted, but compatibility with every edition is not guaranteed. Co-op and multiplayer have not been tested.
+The original Steam edition (App 8080), GOG and a compatible legacy PC build passed local game tests. Setup checks that the selected executable has a supported layout, and the launcher checks the edition's startup libraries separately.
 
 ## Windows installer
 
-1. Download and run **KaneLynchVR-0.3.61-Setup.exe** from the project's Releases page.
+1. Download and run **KaneLynchVR-0.3.64-Setup.exe** from the project's Releases page.
 2. Confirm the detected **kaneandlynch.exe**, or browse to your game's executable.
 3. Choose a separate writable folder for the mod. The default installation does not require administrator rights. Do not select the game folder or another mod's folder.
 4. Connect the headset and start its PC VR software.
@@ -36,7 +36,7 @@ Testing has focused on Quest hardware and Touch-style controllers. Meta, VDXR an
 
 **DXVK** is the fresh-install default. **Original** uses the game's Direct3D 9 renderer; **DXVK** translates it to Vulkan. **D3D9On12** translates it to Direct3D 12 and supports GPU frame transfer to the VR host. These choices normally preserve the game's visual style; they can differ in performance and compatibility.
 
-All three renderers use the GPU to render the game. D3D9On12 can also avoid the CPU image-transfer path used by the other two modes. This does not guarantee a higher frame rate on every PC.
+All three renderers use the GPU to render the game. DXVK enables direct GPU frame transfer with shared Direct3D 9 images by default when the hardware and driver support it. D3D9On12 also supports GPU frame transfer. Actual performance varies by scene, system and headset connection.
 
 **D3D9On12 remains experimental:** a loading-related GPU timeout/system crash has been reported and is still under investigation. Use DXVK or Original if you encounter this problem.
 
@@ -46,13 +46,13 @@ The launcher manages its selected renderer files using ownership checks. An unre
 
 ## Modifiers and movement
 
-Use **Modifiers** for VR cutscenes, laser and aiming graphics, mounted mouse aiming, game-action hints and VR button hints. Use **Movement** for turning and stick settings. See [controls and settings](CONTROLS.md#modifiers) for the complete list.
+Use **Modifiers** for physical reload, VR cutscenes, laser and aiming graphics, mounted mouse aiming and game hints. Use **Movement** for turning and stick settings. See [controls and settings](CONTROLS.md) for gamepad input and physical reload.
 
-VR cutscenes, logging and automatic recording are off initially. The ordinary laser and original mounted-gun crosshair are on; the extra handheld reticle is off.
+Fresh installs enable physical reload, the laser and the original mounted-gun crosshair. VR cutscenes, logging and automatic recording are off initially.
 
 ## Portable ZIP
 
-Extract the complete **KaneLynchVR-0.3.61-Portable.zip** into a separate writable folder. Open **KaneLynchVRSettings.cmd**, select the local game and connection, then choose **Save & play**. Keep the package files together; do not copy them over the game's original files.
+Extract the complete **KaneLynchVR-0.3.64-Portable.zip** into a separate writable folder. Open **KaneLynchVRSettings.cmd**, select the local game and connection, then choose **Save & play**. Keep the package files together; do not copy them over the game's original files.
 
 If you move the mod to another PC, use **Find game** or browse to that PC's executable again. Distributed settings contain no personal game or runtime path. A game installed on a different drive may need a full path selected on that PC.
 

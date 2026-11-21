@@ -1,11 +1,20 @@
-# Kane & Lynch: Dead Men VR — 0.3.61 Public Alpha
+# Kane & Lynch: Dead Men VR — 0.3.64
 
-An unofficial VR conversion for the original **Kane & Lynch: Dead Men (2007)** on PC. Requires your own copy of the game; the **Steam version (App 8080)** is the primary tested edition.
+An unofficial VR conversion for the original **Kane & Lynch: Dead Men (2007)** on PC. Requires your own copy of the game. Local tests covered the original Steam edition (App 8080), GOG and a compatible legacy PC build.
+
+The physical reload cycle was verified on Steam with the release profile and stock Games for Windows Live components.
+
+## What's new
+
+- **Physical reload in Settings.** Open **Modifiers → Physical reload**, save and restart the game after changing it. Fresh installs enable it for supported weapons. Updates enable it for profiles that never had a reload setting, and keep a saved on or off choice.
+- **Performance.** Original Direct3D 9 captures MSAA frames faster. In a controlled 4K, 8× MSAA test, the game produced about 60 source eye frames per second, up from about 50, with matching pixels. The default DXVK profile uses direct GPU frame transfer where supported. The mod also avoids repeated DirectInput scans when devices stay connected.
+- **Reload handling.** Physical reloads cover detachable magazines, shotgun tubes, revolver cylinders and individual rounds on supported weapons. Magazine placement, insertion, bolt and pump handling, and empty-chamber feedback have been refined. The Type 88 uses its original reload. Switching weapons no longer starts an automatic reload.
+- **Original HUD in VR.** The game's ammo display, weapon icons and action prompts are adapted to VR. Hold **Y** to open the wrist-mounted map, squad panel and weapon wheel. The right stick selects weapons and right grip cycles squadmates. Long subtitles wrap across lines. Hold **B** to climb.
 
 ## Download
 
-- **KaneLynchVR-0.3.61-Setup.exe** — recommended Windows installer, with game detection and Play/Settings shortcuts.
-- **KaneLynchVR-0.3.61-Portable.zip** — extract completely into a separate writable folder, then open **KaneLynchVRSettings.cmd**.
+- **KaneLynchVR-0.3.64-Setup.exe** — recommended Windows installer, with game detection and Play/Settings shortcuts.
+- **KaneLynchVR-0.3.64-Portable.zip** — extract completely into a separate writable folder, then open **KaneLynchVRSettings.cmd**.
 
 Connect your headset, select the matching connection in Settings and choose **Save & play**. Python is not required for the mod. The original game and saved games are not included.
 
@@ -14,16 +23,14 @@ Connect your headset, select the matching connection in Settings and choose **Sa
 - Stereo rendering, positional head tracking, tracked native arms and controller-based aiming.
 - Second-hand support for long guns and the original near-face sniper optic.
 - VR controls for actions, reloads, grenades, weapon inventory and squad orders.
-- Hand-adapted team/ammunition information, contextual action labels and optional button hints.
 - Configurable laser, native reticles, cutscene presentation, turning and mounted mouse aiming.
 - Meta, Virtual Desktop / VDXR and SteamVR / OpenXR connection profiles.
-- A correction for the first-scene GPU-transfer loop that could cause a black screen with D3D9On12, plus independent Settings windows for separate mod folders.
 
-Fresh installations use **DXVK**, a laser on ordinary weapons and the original mounted machine-gun crosshair. The additional handheld reticle, VR cutscenes, diagnostic logging and automatic recording are off initially. Testing cheats are hidden.
+Fresh installations use DXVK, the handheld laser and the original mounted machine-gun crosshair. VR cutscenes, diagnostic logging and automatic recording start disabled.
 
 ## Read before playing
 
-**This is an early alpha.** Performance, scripted interactions, hand/body poses and some rendering effects still need work. Stutters, frame-rate drops and mission-loading crashes are possible. D3D9On12 remains experimental; an earlier loading-related GPU timeout/system crash is still under investigation.
+Performance varies by mission and renderer. Frame delivery can still pause in Virtual Desktop / VDXR while the game window keeps updating. D3D9On12 is experimental. Short rendering stalls still occurred in its Steam test, and a loading-related GPU timeout remains under investigation. See [known issues](KNOWN-ISSUES.md) for details.
 
 **VR cutscenes are optional.** Scenes were authored for fixed shots and may have no animation outside the original camera view. Looking around can reveal strange or incomplete character movement. Leave **VR cutscenes** off for the original cinematic framing on a virtual screen.
 

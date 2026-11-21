@@ -12,15 +12,15 @@ The default layout uses **Touch-style controllers**. Other controllers and heads
 | Right stick click | Recenter |
 | Right trigger | Fire |
 | A, short release | Reload |
-| Hold A while moving | Sprint; release ends sprint without reloading |
+| Hold A while moving | Sprint. Release A to stop sprinting |
 | B, tap | Crouch/stand |
-| Hold B near cover | Enter cover |
-| X, short release | Contextual action: pick up, use, climb, revive, use a rope, etc. |
-| Hold X | Show the team/ammunition panel and objective guidance; release to close |
+| Hold B at a climb prompt | Climb or vault |
+| X, short release | Interact with objects, pick up items, revive a teammate or use a rope |
 | Y, short release | Switch weapon |
-| Hold Y | Open weapon inventory; select with the right stick, release Y to equip |
+| Hold Y | Open the weapon wheel, map and team panel |
+| Right stick while holding Y | Select a weapon. Release Y to equip it and close the panels |
 | Left grip near the fore-end | Support a long gun with the second hand |
-| Hold right grip | Prepare a grenade; release to throw |
+| Hold right grip during gameplay | Prepare a grenade. Release to throw |
 | Y while preparing a grenade | Change grenade type |
 | X while preparing a grenade | Cancel the throw |
 | Menu | Pause |
@@ -29,7 +29,7 @@ The left trigger does not enter the ordinary game's aiming mode. To use the snip
 
 ## Squad commands
 
-Hold **X**, then move the **right stick up/down** to select a teammate. While the panel is open:
+Hold **Y** to show the map and team on the left, with the weapon wheel and ammunition on the right. Press **right grip** to cycle forward through the available recipients.
 
 | Input | Order |
 |---|---|
@@ -37,7 +37,15 @@ Hold **X**, then move the **right stick up/down** to select a teammate. While th
 | B | Move to the position indicated by your aim |
 | Right trigger | Attack the indicated enemy |
 
-The panel stays open so you can issue different orders to several teammates. Release X to close it, then release the command buttons before returning to their gameplay actions.
+Keep Y held to issue several orders. Release Y to close the panel and let go of any held command inputs before using them again. Right grip returns to grenade control after the panel closes.
+
+## Optional physical reload
+
+Physical reload is enabled on fresh installs for supported weapons. To use the original reload, turn off **Physical reload** under **Settings → Modifiers**, then save and restart the game. Machine guns and weapons without a supported physical mechanism use the original animation.
+
+For a weapon with a detachable magazine, press **A** to release the magazine. Squeeze **left grip** at the belt to take a spare, bring it to the magazine well and release once it seats. Some weapons, such as the P90, load from the top. If the chamber is empty, grip the bolt or slide and cycle it before firing.
+
+For a tube-fed shotgun, use **left grip** to take up to four shells at the belt and feed them into the loading port. Cycle the pump when the chamber is empty. On supported revolvers and single-round sniper rifles, press **A** to open the cylinder or bolt, then use **left grip** to take and load rounds. Follow the native action prompt by the right hand when it appears.
 
 ## Menus, cutscenes and keyboard
 
@@ -51,14 +59,14 @@ Open Settings before launching the game. Change the options you want, then use *
 
 | Setting | What it does |
 |---|---|
+| Physical reload | Use tracked hands to reload supported weapons. On by default for fresh installs. |
 | VR cutscenes | Adapt in-engine cutscenes to VR. Off by default; when off, watch the original shot on a virtual cinema screen. Off-camera animation may be missing when enabled. |
 | Show weapon aiming reticle | Enable the additional aiming graphic on handheld weapons. Off by default, independently of the laser. |
 | Show mounted machine-gun reticle | Enable the aiming graphic on mounted guns. On by default. |
 | Aiming reticle style | Choose **Dot** or **Original crosshair** for the enabled reticles, without entering zoom. |
 | Aim mounted guns with the mouse | Replace VR-controller aiming on mounted guns with the game's mouse aiming. The VR view stays active. |
 | Show laser sight | Enable the held weapon's laser beam and impact dot. On by default. |
-| Show game action hints | Show the available X action near your hand. On by default. |
-| Show VR control hints | Show extra button help beside the hands. Off by default. |
+| Show game hints | Show native game instructions and nearby actions, including climb and supported reload steps. On by default. |
 
 The **Movement** page offers smooth turning, snap turning or mouse compatibility, with turn speed, snap angle and stick deadzone settings. **Diagnostics → Enable diagnostic logs** is for troubleshooting and is off during normal play.
 
