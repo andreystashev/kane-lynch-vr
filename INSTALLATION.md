@@ -11,7 +11,7 @@ The original Steam edition (App 8080), GOG and a compatible legacy PC build pass
 
 ## Windows installer
 
-1. Download and run **KaneLynchVR-0.3.64-Setup.exe** from the project's Releases page.
+1. Download and run **KaneLynchVR-0.3.65-Setup.exe** from the project's Releases page.
 2. Confirm the detected **kaneandlynch.exe**, or browse to your game's executable.
 3. Choose a separate writable folder for the mod. The default installation does not require administrator rights. Do not select the game folder or another mod's folder.
 4. Connect the headset and start its PC VR software.
@@ -52,7 +52,7 @@ Fresh installs enable physical reload, the laser and the original mounted-gun cr
 
 ## Portable ZIP
 
-Extract the complete **KaneLynchVR-0.3.64-Portable.zip** into a separate writable folder. Open **KaneLynchVRSettings.cmd**, select the local game and connection, then choose **Save & play**. Keep the package files together; do not copy them over the game's original files.
+Extract the complete **KaneLynchVR-0.3.65-Portable.zip** into a separate writable folder. Open **KaneLynchVRSettings.cmd**, select the local game and connection, then choose **Save & play**. Keep the package files together; do not copy them over the game's original files.
 
 If you move the mod to another PC, use **Find game** or browse to that PC's executable again. Distributed settings contain no personal game or runtime path. A game installed on a different drive may need a full path selected on that PC.
 

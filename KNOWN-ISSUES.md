@@ -1,4 +1,4 @@
-# Known issues — 0.3.64
+# Known issues — 0.3.65
 
 Local tests covered the original Steam and GOG releases and a compatible legacy PC build. Headset testing has focused on Quest hardware and Touch-style controllers. Results vary with mission, renderer and headset connection.
 
