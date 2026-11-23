@@ -1,6 +1,6 @@
 # Kane & Lynch: Dead Men VR
 
-**[Download 0.3.66 — Windows installer](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.66/KaneLynchVR-0.3.66-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.66/KaneLynchVR-0.3.66-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr-showcase/releases)
+**[Download 0.3.66 — Windows installer](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.66/KaneLynchVR-0.3.66-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.66/KaneLynchVR-0.3.66-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr/releases)
 
 An unofficial VR mod for the original **Kane & Lynch: Dead Men (2007)** on PC, with stereo rendering, positional head tracking, motion-controller aiming and tracked native arms.
 
@@ -44,7 +44,7 @@ comfort controls and diagnostic logging. Fresh installs use **DXVK**.
 See [Build from source](docs/BUILD.md) for toolchain setup, tests and
 installer packaging. [Architecture](docs/ARCHITECTURE.md) maps the source tree.
 
-The installer and Portable ZIP are built from the [v0.3.66 source](https://github.com/andreystashev/kane-lynch-vr-showcase/tree/v0.3.66).
+The installer and Portable ZIP are built from the [v0.3.66 source](https://github.com/andreystashev/kane-lynch-vr/tree/v0.3.66).
 The project code is under the [MIT license](LICENSE).
 Third-party components are covered by their own [terms](docs/THIRD-PARTY-NOTICES.md).
 
@@ -60,7 +60,7 @@ Meta Quest Link / Air Link, Virtual Desktop / VDXR and SteamVR / OpenXR connecti
 
 ## Feedback
 
-Please report reproducible problems in [Issues](https://github.com/andreystashev/kane-lynch-vr-showcase/issues), including the mod version, mission, renderer, connection, headset and steps to reproduce the problem. State whether it affects the game window, the headset or both.
+Please report reproducible problems in [Issues](https://github.com/andreystashev/kane-lynch-vr/issues), including the mod version, mission, renderer, connection, headset and steps to reproduce the problem. State whether it affects the game window, the headset or both.
 
 Logs are optional: enable **Diagnostics → Enable diagnostic logs**, restart the game, reproduce the issue and run **Collect-KL1-Diagnostics.cmd**. Turn logging off again afterward. See [troubleshooting](docs/TROUBLESHOOTING.md) before sharing diagnostic files.
 
