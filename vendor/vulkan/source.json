@@ -1,0 +1,21 @@
+{
+  "version": "v1.2.198",
+  "files": {
+    "vulkan_core.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/v1.2.198/include/vulkan/vulkan_core.h",
+      "sha256": "b2e7e3be29a4ccb12ff169c8ebb4850ee9295cc1904f74d795cab5dd64ba1060"
+    },
+    "vulkan_win32.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/v1.2.198/include/vulkan/vulkan_win32.h",
+      "sha256": "428652600e7245708ead75bfadf2d9ff4f6c1da8e063479ad33d3d09230e699d"
+    },
+    "vk_platform.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/v1.2.198/include/vulkan/vk_platform.h",
+      "sha256": "dfca6a95c7b511fdcf731d09c30fc145ef1801bef53799f4bcfdbe00a936cd48"
+    },
+    "LICENSE.txt": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Headers/v1.2.198/LICENSE.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  }
+}

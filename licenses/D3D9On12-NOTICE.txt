@@ -1,5 +1,5 @@
-Kane & Lynch 2 VR x86 D3D9On12 selector.
-Built reproducibly by build-on12-renderer.ps1 from src/renderers/.
+Kane & Lynch: Dead Men VR x86 D3D9On12 selector.
+Built by build-vr.ps1 from src/render/on12/.
 Loads the Windows D3D9On12 implementation from the system directory.
 No Microsoft runtime binaries are redistributed.
 The process-local policy bounds temporary upload batches to 8 MiB and idle

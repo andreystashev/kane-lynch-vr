@@ -27,20 +27,32 @@ You need your own copy of the original PC game. Local tests covered the original
 
 The default installation does not require administrator rights or Python. The Play shortcut uses your saved settings. A Portable ZIP is available if you prefer to extract the complete mod into a writable folder.
 
-[Installation](INSTALLATION.md) · [Controller controls](CONTROLS.md) · [Troubleshooting and recording](TROUBLESHOOTING.md) · [Known issues](KNOWN-ISSUES.md)
+[Installation](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/INSTALLATION.md) · [Controller controls](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/CONTROLS.md) · [Troubleshooting and recording](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/TROUBLESHOOTING.md) · [Known issues](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/KNOWN-ISSUES.md)
 
-## Settings and modifiers
+## Settings
 
-The **Modifiers** page lets you choose physical reload, VR cutscenes, laser and aiming graphics, optional mouse aiming for mounted guns and native game hints. The **Movement** page provides smooth/snap turning, turn speed, snap angle and stick deadzone.
+In 0.3.66, open **Options → VR Settings** from the main menu or
+the pause menu to change physical reload, cutscenes, aiming graphics and game
+hints. The downloadable 0.3.65 hotfix puts these options in the desktop
+Settings app under **Modifiers**.
 
-Fresh installations use **DXVK**. **Original** and experimental **D3D9On12** are also available. Results vary by scene and PC; see the [renderer notes](INSTALLATION.md#renderer-and-graphics).
+Use the desktop Settings app for game selection, VR connection, renderers,
+comfort controls and diagnostic logging. Fresh installs use **DXVK**.
+**Original** and experimental **D3D9On12** are also available. See the
+[renderer notes](docs/INSTALLATION.md#renderer-and-graphics).
 
-The default aiming display uses the handheld laser and original mounted machine-gun crosshair. Physical reload starts enabled for supported weapons. To switch to the original reload, turn off **Modifiers → Physical reload**, save and restart the game. VR cutscenes, diagnostic logs and automatic recording start turned off.
+## Source and builds
+
+See [Build from source](docs/BUILD.md) for toolchain setup, tests and
+installer packaging. [Architecture](docs/ARCHITECTURE.md) maps the source tree.
+
+This repository contains the 0.3.66 source. The 0.3.66 installer is awaiting play testing. The project code is under the [MIT license](LICENSE).
+Third-party components are covered by their own [terms](docs/THIRD-PARTY-NOTICES.md).
 
 ## Known limitations
 
 - **VR cutscenes can look strange.** Original shots were made for a fixed camera, and animation may be missing outside that shot. Looking around can reveal incomplete or unnatural character movement. Leave **VR cutscenes** off to watch the original framing on a cinema screen.
-- **The vehicle-mounted machine-gun sequence near the end of the game is difficult to control in VR.** Controller aiming and right-stick adjustment remain rough. Enable **Aim mounted guns with the mouse** in Modifiers to aim with a physical mouse while keeping the VR view.
+- **The vehicle-mounted machine-gun sequence near the end of the game is difficult to control in VR.** Controller aiming and right-stick adjustment remain rough. Enable **Mounted Mouse Aim** in VR Settings (called **Aim mounted guns with the mouse** in the 0.3.65 hotfix) to aim with a physical mouse while keeping the VR view.
 - **Performance and stability are still uneven.** Expect scene-dependent frame-rate drops, stutters and possible loading crashes. D3D9On12 has an unresolved report of a loading-related GPU timeout/system crash; DXVK or Original are alternatives.
 - Some body/weapon poses, reflections and effects can still show visual artifacts. Not every mission, headset or controller has been validated.
 - **Co-op and multiplayer have not been tested and are not guaranteed to work.**
@@ -51,6 +63,6 @@ Meta Quest Link / Air Link, Virtual Desktop / VDXR and SteamVR / OpenXR connecti
 
 Please report reproducible problems in [Issues](https://github.com/andreystashev/kane-lynch-vr-showcase/issues), including the mod version, mission, renderer, connection, headset and steps to reproduce the problem. State whether it affects the game window, the headset or both.
 
-Logs are optional: enable **Diagnostics → Enable diagnostic logs**, restart the game, reproduce the issue and run **Collect-KL1-Diagnostics.cmd**. Turn logging off again afterward. See [troubleshooting](TROUBLESHOOTING.md) before sharing diagnostic files.
+Logs are optional: enable **Diagnostics → Enable diagnostic logs**, restart the game, reproduce the issue and run **Collect-KL1-Diagnostics.cmd**. Turn logging off again afterward. See [troubleshooting](docs/TROUBLESHOOTING.md) before sharing diagnostic files.
 
-[Third-party notices](THIRD-PARTY-NOTICES.md) and license texts accompany the download.
+[Third-party notices](docs/THIRD-PARTY-NOTICES.md) and license texts accompany the download.

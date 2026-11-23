@@ -1,0 +1,27 @@
+{
+  "implementation": "Windows system D3D9On12; owned x86 selector with process-local upload/readback cache policy",
+  "source": [
+    "src/render/on12/on12_selector.cpp",
+    "src/render/on12/on12_selector.def",
+    "src/render/on12/on12_memory_policy.hpp",
+    "src/render/d3d9_on12_api.hpp"
+  ],
+  "sourceSha256": {
+    "src/render/on12/on12_selector.cpp": "7c291567a4d96ce76772c5c97501ec199e233ddefbe89637bd442e1619427ab0",
+    "src/render/on12/on12_selector.def": "24cdbfb7a7b8929a16e8f0f371d06664ad7f2aa3d82e16176bbd52f0a01ec4c6",
+    "src/render/on12/on12_memory_policy.hpp": "6ca5df397f5309008e769d670267c59da00afb42214602b8ef9ca2fe2b3602dd",
+    "src/render/d3d9_on12_api.hpp": "c2c751b2d9c9afc2cc99678e8849d47f4c2820f974ac789e461a820a342055df"
+  },
+  "build": "build-vr.ps1",
+  "compiler": "LLVM-MinGW 20261006 i686; -O2 -static; --no-insert-timestamp",
+  "dllSha256": null,
+  "policy": {
+    "uploadBytes": 8388608,
+    "trimFences": 5,
+    "scope": "process only; guarded 28-byte SetAppCompatData ABI; no global registry",
+    "enabledByDefault": true
+  },
+  "interfaceSource": "https://github.com/microsoft/D3D9On12/blob/9543ac633c8c73b31f6a630869bc769b89dbdebc/interface/d3d9on12ddi.h",
+  "experimental": true,
+  "diagnosticLogging": "Off by default; opt-in process environment KL2_VR_RENDERER_LOG=1"
+}

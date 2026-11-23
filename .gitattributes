@@ -1,0 +1,19 @@
+* text=auto eol=lf
+*.cmd text eol=crlf whitespace=cr-at-eol
+
+# Preserve release-pinned third-party bytes across Git checkout settings.
+vendor/dxvk-x86/* -text -whitespace
+vendor/d3d9on12-x86/* -text -whitespace
+vendor/vulkan/*.h -text -whitespace
+vendor/vulkan/LICENSE.txt -text -whitespace
+vendor/OPENVR-LICENSE -text -whitespace
+vendor/OPENXR-LICENSE -text -whitespace
+vendor/JSONCPP-LICENSE -text -whitespace
+THIRD-PARTY-AUDIO.txt -text -whitespace
+# Upstream license whitespace is intentional.
+licenses/* -text -whitespace
+
+# Preserve the renderer source bytes referenced in provenance.
+src/render/on12/* text eol=lf
+vendor/minhook/LICENSE.txt -text -whitespace
+vendor/openxr/*.h -text -whitespace

@@ -1,15 +1,14 @@
-# Kane & Lynch: Dead Men VR — 0.3.65 hotfix
+# Kane & Lynch: Dead Men VR 0.3.66
 
-## What's fixed
-
-- **Wrist HUD.** Refined the map, squad panel and weapon wheel layout. You can now open them with **Y** while crouched and stay crouched.
-- **HUD flicker.** Fixed the flash near the hands when opening the wrist HUD and the intermittent flicker in the squad panel.
-- **AK-74 physical reload.** Fixed manual magazine changes, the bolt grab position and flashes of the detached magazine still appearing on the rifle.
-- **Retomoto Tower.** Restored glossy reflections on the three circular floors. Reflections from the room blend into the lobby's environment map as you turn or move between floors.
-
-## Downloads
-
-- **KaneLynchVR-0.3.65-Setup.exe** is the Windows installer for new installs and upgrades.
-- **KaneLynchVR-0.3.65-Portable.zip** can be extracted into a separate writable folder.
-
-Physical reload starts enabled on fresh installs. Toggle it in **Settings → Modifiers → Physical reload**, then restart the game.
+- Open **Options → VR Settings** in the main menu or pause menu to change
+  gameplay settings such as physical reload, cutscenes, aiming graphics and
+  game hints. The desktop Settings app handles the game path, headset
+  connection, renderer, turning and diagnostics.
+- Upgrades preserve your laser and reticle preferences.
+- The launcher checks the game executable and its edition's startup route.
+  Steam and GOG use their original launchers.
+- The project builds its D3D9On12 selector from source and validates the
+  bundled renderer before switching. DXVK remains the default renderer.
+- Optional VDXR recording uses software H.264 by default.
+- This release is built from the public source tree under the MIT license.
+  See the third-party notices for component terms.

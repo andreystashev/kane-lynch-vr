@@ -1,0 +1,12 @@
+{
+  "release": "DXVK 3.1.1",
+  "source": "https://github.com/doitsujin/dxvk/releases/tag/v3.1.1",
+  "licenseSource": "https://raw.githubusercontent.com/doitsujin/dxvk/v3.1.1/LICENSE",
+  "archiveSha256": "40565b4a724aadc4433fa4e010b4b23916d9b1f1baeee64e17186db94f54e608",
+  "architecture": "x86",
+  "files": {
+    "d3d9.dll": "265888c31ca78dffa290c39cb7e50bfb02762590e41927906e46fb32f01497fa",
+    "LICENSE": "a5cb1a6ded7d2d7e92d550ba28edd21be2d1d4044662b399887351023e30ce64"
+  },
+  "purpose": "Optional reversible Kane & Lynch: Dead Men game renderer. Existing unrelated renderer DLLs are preserved."
+}

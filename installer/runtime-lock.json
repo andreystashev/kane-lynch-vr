@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "product": "Kane & Lynch: Dead Men VR",
+  "version": "0.3.66",
+  "files": {
+    "LaunchVR.exe": "f78bf6834a1a6af504634c407cb7fee1265829183a986d469c19a12390ec0087",
+    "KaneLynchVR.dll": "1edd1f60d91a733d0c683df07113bf66d872a0d624544a95c8d25b61fd0b0c8b",
+    "KaneLynchVRAudio.dll": "3ce9f81adf17e2a21402b896d33a47215fb255bcb7b17b6b13c689f60a83443a",
+    "KaneLynchVRHost.exe": "0cc02856955b01238bc3fc63f262e2c14e16084b48ac2ba8853417b8f60d2a95",
+    "KaneLynchVRMonitor.exe": "e2563a8ff67892263dafb89469b0c1622e683b373103d7203521933785b6feba",
+    "KaneLynchVRSettings.exe": "442ef557e3a22ea785ff67004ee703d572fe0620da8065a6c2607730af2bd97f",
+    "THIRD-PARTY-AUDIO.txt": "5ac367c7715d57ddec4a8a20ca2d2ad16df6725f70376d6e1428bcdb8f4c457d",
+    "OPENVR-LICENSE": "f56ff606104d4ef18e617921a75c73ad73b5a1a1d70c69590c29de16919e04ad",
+    "renderer-dxvk-x86/d3d9.dll": "265888c31ca78dffa290c39cb7e50bfb02762590e41927906e46fb32f01497fa",
+    "renderer-dxvk-x86/LICENSE": "a5cb1a6ded7d2d7e92d550ba28edd21be2d1d4044662b399887351023e30ce64",
+    "renderer-dxvk-x86/provenance.json": "3b9be94d1009cfa51203a29029f8e15fd44d6f0a6ff386387b5b7a291a8d7301",
+    "renderer-d3d9on12-x86/d3d9.dll": "b80f432c623e10d371b2d556cba7b485a60a8cbb40f69c14e4a19bfda2d2f6d9",
+    "renderer-d3d9on12-x86/NOTICE.txt": "c2391335f9ef16512c977c24f5fac3aa98979ce8851379bd3170c1ee1903148c",
+    "renderer-d3d9on12-x86/MINHOOK-LICENSE.txt": "4f21f857550d7be854da6ea5f2da4e6775ca4e3fbb535e4f3d961c47d0bf3335",
+    "renderer-d3d9on12-x86/provenance.json": "90093e3cbe2b703f41a5b3d550da33f58c515e1ed1bfb3c1773943912daae86a",
+    "KaneLynchOpenXRHost.exe": "c0daf03771a22936b665e9ffc6024dc203e72d30fdd2c6ed29aae124438b0b95",
+    "openxr_loader.dll": "3c894b7b34d883b03cddadbc2d60dbbaffc795893cf5488cb280620be67771e0",
+    "OPENXR-LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "JSONCPP-LICENSE": "ecf1a272af5d660ed0054701b5662e6a9f208b56502dc67983fce60a657d58b2"
+  }
+}

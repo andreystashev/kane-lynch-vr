@@ -1,0 +1,12 @@
+{
+  "component": "Khronos OpenXR SDK Windows x64 loader",
+  "sdkVersion": "1.1.65",
+  "source": "https://github.com/KhronosGroup/OpenXR-SDK/releases/tag/release-1.1.65",
+  "sourceCommit": "24a1f2b92d212501a2b1b8d30ffd53abf55fcfa8",
+  "origin": "Pinned upstream OpenXR loader",
+  "files": {
+    "openxr_loader.dll": "3c894b7b34d883b03cddadbc2d60dbbaffc795893cf5488cb280620be67771e0",
+    "OPENXR-LICENSE": "3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5",
+    "JSONCPP-LICENSE": "ecf1a272af5d660ed0054701b5662e6a9f208b56502dc67983fce60a657d58b2"
+  }
+}

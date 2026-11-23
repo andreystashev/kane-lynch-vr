@@ -1,11 +1,19 @@
-*.exe
-*.dll
-*.zip
-*.ini
+# Build outputs and local configuration.
+/.cache-*/
+/dist-*/
+/releases-installer*/
+/toolchains/
+/build/
+/sdk/
+/vr.ini
+/launcher.ini
 *.log
 *.dmp
 *.tmp
-logs/
-recordings/
-.cache-build/
-installer-build.json
+*.obj
+*.pdb
+__pycache__/
+*.pyc
+/logs/
+/recordings/
+/diagnostics/

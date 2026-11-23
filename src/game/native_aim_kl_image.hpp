@@ -1,0 +1,33 @@
+#pragma once
+#include "native_weapon_ownership.hpp"
+#include <cstring>
+namespace NativeAimKLImage {
+constexpr std::uintptr_t RoomRay=0x110830,BackendRay=0xc3b20;
+inline bool RoomType(std::uintptr_t image,std::uint32_t table) {
+    return table==image+0x54a72c||table==image+0x54aa34||table==image+0x54b3ac||table==image+0x575cf4;
+}
+template<std::size_t N,class Reader>bool Match(std::uintptr_t image,std::uintptr_t rva,const unsigned char (&bytes)[N],Reader read) {
+    unsigned char actual[N]{};return NativeWeaponOwnership::Address(image+rva,N)&&
+        read(image+rva,actual,N)&&!std::memcmp(actual,bytes,N);
+}
+template<class Reader>bool Verify(std::uintptr_t image,Reader read) {
+    const unsigned char room[]={0x8b,0x44,0x24,0x1c,0x83,0xec,0x58,0x83,0xf8,0xff,0x75,5,0xb8,0x0a,0,0,0};
+    const unsigned char returned[]={0x5e,0x83,0xc4,0x58,0xc2,0x1c,0};
+    const unsigned char initialized[]={0xd9,0xe8,0x8b,0xc1,0x33,0xc9,0xd9,0x58,0x24,0x89,0x48,0x3c,0xc6,0x40,0x64,1,0x89,0x48,0x68,0xc3};
+    const unsigned char nativeCall[]={0x6a,1,0x6a,1,0x6a,0xff,0x6a,6,0x6a,0,0x50,0xff,0xd2};
+    const unsigned char detector[]={0x55,0x8b,0xec,0x83,0xe4,0xc0,0x81,0xec,0xb4,3,0,0};
+    const unsigned char detectorRay[]={0x8b,0x0d,0xf0,0x75,0xa8,0,0x8b,0x91,0xa8,0,0,0,0x8b,0x8a,0x8c,0,0,0,
+        0x8b,1,0x8b,0x80,0x6c,2,0,0,0x6a,0x19,0x6a,1,0x6a,1,0x6a,0xff,0x6a,0x2c,0x6a,0};
+    const unsigned char backend[]={0x56,0x8b,0xf1,0x8b,0x0d,0x0c,0x76,0xa8,0,0xe8,0x22,0x97,0xf9,0xff};
+    if(!Match(image,RoomRay,room,read)||!Match(image,0x11098e,returned,read)||
+       !Match(image,0x1fa20,initialized,read)||!Match(image,0x150dce,nativeCall,read)||
+       !Match(image,0x1fb290,detector,read)||!Match(image,0x1fc196,detectorRay,read)||!Match(image,BackendRay,backend,read))return false;
+    for(const auto table:{0x54a72cu,0x54aa34u,0x54b3acu,0x575cf4u}) {
+        std::uint32_t method=0;if(!NativeWeaponOwnership::Read(image+table+0x26c,method,read)||method!=image+RoomRay)return false;
+    }
+    for(const auto table:{0x5411c4u,0x541274u}) {
+        std::uint32_t method=0;if(!NativeWeaponOwnership::Read(image+table+0x2c,method,read)||method!=image+BackendRay)return false;
+    }
+    return true;
+}
+}
