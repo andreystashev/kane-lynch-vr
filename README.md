@@ -1,6 +1,6 @@
 # Kane & Lynch: Dead Men VR
 
-**[Download 0.3.65 — Windows installer](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.65/KaneLynchVR-0.3.65-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.65/KaneLynchVR-0.3.65-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr-showcase/releases)
+**[Download 0.3.66 — Windows installer](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.66/KaneLynchVR-0.3.66-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr-showcase/releases/download/v0.3.66/KaneLynchVR-0.3.66-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr-showcase/releases)
 
 An unofficial VR mod for the original **Kane & Lynch: Dead Men (2007)** on PC, with stereo rendering, positional head tracking, motion-controller aiming and tracked native arms.
 
@@ -22,19 +22,17 @@ You need your own copy of the original PC game. Local tests covered the original
 ## Install and play
 
 1. Install the original game and connect your PC VR headset.
-2. Run **KaneLynchVR-0.3.65-Setup.exe**, confirm the detected game executable and choose a separate folder for the mod.
+2. Run **KaneLynchVR-0.3.66-Setup.exe**, confirm the detected game executable and choose a separate folder for the mod.
 3. Open **Kane & Lynch Dead Men VR Settings**, select your headset connection and choose **Save & play**.
 
 The default installation does not require administrator rights or Python. The Play shortcut uses your saved settings. A Portable ZIP is available if you prefer to extract the complete mod into a writable folder.
 
-[Installation](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/INSTALLATION.md) · [Controller controls](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/CONTROLS.md) · [Troubleshooting and recording](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/TROUBLESHOOTING.md) · [Known issues](https://github.com/andreystashev/kane-lynch-vr-showcase/blob/v0.3.65/KNOWN-ISSUES.md)
+[Installation](docs/INSTALLATION.md) · [Controller controls](docs/CONTROLS.md) · [Troubleshooting and recording](docs/TROUBLESHOOTING.md) · [Known issues](docs/KNOWN-ISSUES.md)
 
 ## Settings
 
-In 0.3.66, open **Options → VR Settings** from the main menu or
-the pause menu to change physical reload, cutscenes, aiming graphics and game
-hints. The downloadable 0.3.65 hotfix puts these options in the desktop
-Settings app under **Modifiers**.
+Open **Options → VR Settings** from the main menu or pause menu to change
+physical reload, cutscenes, aiming graphics and game hints.
 
 Use the desktop Settings app for game selection, VR connection, renderers,
 comfort controls and diagnostic logging. Fresh installs use **DXVK**.
@@ -46,13 +44,14 @@ comfort controls and diagnostic logging. Fresh installs use **DXVK**.
 See [Build from source](docs/BUILD.md) for toolchain setup, tests and
 installer packaging. [Architecture](docs/ARCHITECTURE.md) maps the source tree.
 
-This repository contains the 0.3.66 source. The 0.3.66 installer is awaiting play testing. The project code is under the [MIT license](LICENSE).
+The installer and Portable ZIP are built from the [v0.3.66 source](https://github.com/andreystashev/kane-lynch-vr-showcase/tree/v0.3.66).
+The project code is under the [MIT license](LICENSE).
 Third-party components are covered by their own [terms](docs/THIRD-PARTY-NOTICES.md).
 
 ## Known limitations
 
 - **VR cutscenes can look strange.** Original shots were made for a fixed camera, and animation may be missing outside that shot. Looking around can reveal incomplete or unnatural character movement. Leave **VR cutscenes** off to watch the original framing on a cinema screen.
-- **The vehicle-mounted machine-gun sequence near the end of the game is difficult to control in VR.** Controller aiming and right-stick adjustment remain rough. Enable **Mounted Mouse Aim** in VR Settings (called **Aim mounted guns with the mouse** in the 0.3.65 hotfix) to aim with a physical mouse while keeping the VR view.
+- **The vehicle-mounted machine-gun sequence near the end of the game is difficult to control in VR.** Controller aiming and right-stick adjustment remain rough. Enable **Mounted Mouse Aim** in VR Settings to aim with a physical mouse while keeping the VR view.
 - **Performance and stability are still uneven.** Expect scene-dependent frame-rate drops, stutters and possible loading crashes. D3D9On12 has an unresolved report of a loading-related GPU timeout/system crash; DXVK or Original are alternatives.
 - Some body/weapon poses, reflections and effects can still show visual artifacts. Not every mission, headset or controller has been validated.
 - **Co-op and multiplayer have not been tested and are not guaranteed to work.**
