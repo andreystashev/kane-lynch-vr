@@ -7,6 +7,7 @@
 #include "sdk_own_cache_codeproof.hpp"
 #include "sdk_own_cache_11_codeproof.hpp"
 #include "sdk_own_cache_35_codeproof.hpp"
+#include "sdk_35_family.hpp"
 #include <cstdio>
 #include <atomic>
 #include <vector>
@@ -73,7 +74,11 @@ inline bool SdkIdentity(Address& base,const SdkLayout** selected=nullptr){
  if(!module)return false;const DWORD n=GetModuleFileNameW(module,path,MAX_PATH),w=GetWindowsDirectoryW(windows,MAX_PATH);
  if(!n||n>=MAX_PATH||!w||w>=MAX_PATH)return false;
  const auto sys=std::wstring(windows)+L"\\System32\\xlive.dll",wow=std::wstring(windows)+L"\\SysWOW64\\xlive.dll";
- char digest[65]{};if(!HashFile(path,digest))return false;const auto* layout=Layout(digest);if(!layout)return false;
+ char digest[65]{};
+ if(!HashFile(path,digest))return false;
+ const auto* layout=Layout(digest);
+ const bool matchFamily=layout==nullptr;
+ if(matchFamily)layout=&sdk35;
  if(_wcsicmp(path,sys.c_str())&&_wcsicmp(path,wow.c_str())){
   // A local original SDK belongs to the selected installation, never another
   // arbitrary search directory. Nothing is copied to/from this path.
@@ -82,8 +87,14 @@ inline bool SdkIdentity(Address& base,const SdkLayout** selected=nullptr){
   if(_wcsicmp(parent(game).c_str(),parent(path).c_str()))return false;
  }
  base=reinterpret_cast<Address>(module);IMAGE_DOS_HEADER dos{};IMAGE_NT_HEADERS32 nt{};
- if(!Read(base,dos)||dos.e_magic!=IMAGE_DOS_SIGNATURE||dos.e_lfanew<=0||dos.e_lfanew>4096||!Read(base+dos.e_lfanew,nt)||nt.Signature!=IMAGE_NT_SIGNATURE||nt.FileHeader.TimeDateStamp!=layout->timestamp||nt.OptionalHeader.SizeOfImage!=layout->imageSize)return false;
+ if(!Read(base,dos)||dos.e_magic!=IMAGE_DOS_SIGNATURE||dos.e_lfanew<=0||dos.e_lfanew>4096||
+    !Read(base+dos.e_lfanew,nt)||nt.Signature!=IMAGE_NT_SIGNATURE||
+    nt.FileHeader.Machine!=IMAGE_FILE_MACHINE_I386||nt.OptionalHeader.Magic!=IMAGE_NT_OPTIONAL_HDR32_MAGIC||
+    nt.OptionalHeader.SizeOfImage!=layout->imageSize||
+    (!matchFamily&&nt.FileHeader.TimeDateStamp!=layout->timestamp))return false;
  for(std::size_t i=0;i<layout->proofCount;++i){const auto& proof=layout->proofs[i];std::vector<unsigned char> actual(proof.length);if(!Bytes(base+proof.rva,actual.data(),actual.size())||std::memcmp(actual.data(),proof.bytes,proof.length))return false;}
+ if(matchFamily&&(!Sdk35Family::MatchesLiveCode(base)||
+                  !Sdk35Family::TrustedFile(path,digest)))return false;
  if(selected)*selected=layout;
  return true;
 }
@@ -176,8 +187,7 @@ inline bool Prepare(const Owner& owner,const std::vector<KL1OwnedPatchAudit::Pag
  return !changes.empty();
 }
 inline bool Same(const Owner& a,const Owner& b){return !std::memcmp(&a,&b,sizeof(a));}
-// Read-only eligibility check before installing any native game hooks. A
-// different SDK is unsupported rather than being modified speculatively.
+// Read-only eligibility check before installing any native game hooks.
 inline bool Preflight(){
  wchar_t gamePath[MAX_PATH]{};char gameHash[65]{};
  const DWORD length=GetModuleFileNameW(nullptr,gamePath,MAX_PATH);

@@ -118,7 +118,7 @@ $gameSources = @(
     "src/game/native_vr_menu_kl.cpp"
 ) | ForEach-Object { Join-Path $root $_ }
 $mod32 = CompileEach $clang32 $gameSources "$cache\x86" @('-std=c++17', '-O2', '-I', $mhInclude)
-& $clang32 ($mod32 + $mh32) -shared -static -o "$dist\KaneLynchVR.dll" -ld3d9 -lbcrypt -lgdi32 -lgdiplus 2>&1 | ForEach-Object { Write-Host "  $_" }
+& $clang32 ($mod32 + $mh32) -shared -static -o "$dist\KaneLynchVR.dll" -ld3d9 -lbcrypt -lgdi32 -lgdiplus -lwintrust -lcrypt32 2>&1 | ForEach-Object { Write-Host "  $_" }
 if($LASTEXITCODE -ne 0){ throw "Link failed: KaneLynchVR.dll" }
 
 Write-Host "== LaunchVR.exe (x86 launcher) =="
