@@ -9,7 +9,7 @@ Setup and Portable commands. Build a separate fixture before testing the
 full installer workflow:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-installer.ps1 -PackageDirectory 'dist-kane-lynch-vr-0.3.66' -LocalBuild -Fixture -Toolchain 'C:\Tools\llvm-mingw'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-installer.ps1 -PackageDirectory 'dist-kane-lynch-vr-0.3.67' -LocalBuild -Fixture -Toolchain 'C:\Tools\llvm-mingw'
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tests\installer\test-installer-workflow.ps1 -BuildReport '<installer-build.json>' -GameExecutable '<kaneandlynch.exe>'
 ```
 

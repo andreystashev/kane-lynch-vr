@@ -1,12 +1,12 @@
 # Kane & Lynch: Dead Men VR
 
-**[Download 0.3.66 — Windows installer](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.66/KaneLynchVR-0.3.66-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.66/KaneLynchVR-0.3.66-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr/releases)
+**[Download 0.3.67 — Windows installer](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.67/KaneLynchVR-0.3.67-Setup.exe)** · [Portable ZIP](https://github.com/andreystashev/kane-lynch-vr/releases/download/v0.3.67/KaneLynchVR-0.3.67-Portable.zip) · [All releases](https://github.com/andreystashev/kane-lynch-vr/releases)
 
 An unofficial VR mod for the original **Kane & Lynch: Dead Men (2007)** on PC, with stereo rendering, positional head tracking, motion-controller aiming and tracked native arms.
 
 Play the original campaign with VR controls for shooting, interaction, squad orders and inventory. Missions and progression use the original game's systems.
 
-You need your own copy of the original PC game. Local tests covered the original Steam edition (App 8080), GOG and a compatible legacy PC build. This is an independent fan project, unaffiliated with the original game's owners.
+You need your own copy of the original PC game. Local tests covered the original Steam edition (App 8080), GOG and a compatible legacy PC build. Steam startup supports compatible Microsoft Games for Windows Live builds, including 3.5.0092.0 and 3.5.0095.0. This is an independent fan project, unaffiliated with the original game's owners.
 
 ## What the mod adds
 
@@ -22,7 +22,7 @@ You need your own copy of the original PC game. Local tests covered the original
 ## Install and play
 
 1. Install the original game and connect your PC VR headset.
-2. Run **KaneLynchVR-0.3.66-Setup.exe**, confirm the detected game executable and choose a separate folder for the mod.
+2. Run **KaneLynchVR-0.3.67-Setup.exe**, confirm the detected game executable and choose a separate folder for the mod.
 3. Open **Kane & Lynch Dead Men VR Settings**, select your headset connection and choose **Save & play**.
 
 The default installation does not require administrator rights or Python. The Play shortcut uses your saved settings. A Portable ZIP is available if you prefer to extract the complete mod into a writable folder.
@@ -32,7 +32,7 @@ The default installation does not require administrator rights or Python. The Pl
 ## Settings
 
 Open **Options → VR Settings** from the main menu or pause menu to change
-physical reload, cutscenes, aiming graphics and game hints.
+physical reload, cutscenes, aiming graphics and game hints. **Game Hints** are on by default.
 
 Use the desktop Settings app for game selection, VR connection, renderers,
 comfort controls and diagnostic logging. Fresh installs use **DXVK**.
@@ -44,7 +44,7 @@ comfort controls and diagnostic logging. Fresh installs use **DXVK**.
 See [Build from source](docs/BUILD.md) for toolchain setup, tests and
 installer packaging. [Architecture](docs/ARCHITECTURE.md) maps the source tree.
 
-The installer and Portable ZIP are built from the [v0.3.66 source](https://github.com/andreystashev/kane-lynch-vr/tree/v0.3.66).
+The installer and Portable ZIP are built from the [v0.3.67 source](https://github.com/andreystashev/kane-lynch-vr/tree/v0.3.67).
 The project code is under the [MIT license](LICENSE).
 Third-party components are covered by their own [terms](docs/THIRD-PARTY-NOTICES.md).
 

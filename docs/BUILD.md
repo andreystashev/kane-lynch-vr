@@ -26,7 +26,7 @@ Open **KaneLynchVRSettings.cmd** there for the first launch. An installation can
 also be checked without starting the game or changing its files:
 
 ```powershell
-.\dist-kane-lynch-vr-0.3.66\LaunchVR.exe --check-installation 'C:\Games\Kane and Lynch Dead Men\kaneandlynch.exe'
+.\dist-kane-lynch-vr-0.3.67\LaunchVR.exe --check-installation 'C:\Games\Kane and Lynch Dead Men\kaneandlynch.exe'
 ```
 
 The check verifies the executable and the native startup route. Steam and
@@ -51,7 +51,7 @@ skipped when it is omitted. A physical headset is needed for gameplay testing.
 Install [Inno Setup](https://jrsoftware.org/isinfo.php), then run:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-installer.ps1 -PackageDirectory 'dist-kane-lynch-vr-0.3.66' -LocalBuild -Toolchain 'C:\Tools\llvm-mingw'
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\build-installer.ps1 -PackageDirectory 'dist-kane-lynch-vr-0.3.67' -LocalBuild -Toolchain 'C:\Tools\llvm-mingw'
 ```
 
 The compiler is found on PATH or in standard install locations. Use
