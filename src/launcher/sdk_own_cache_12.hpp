@@ -6,6 +6,7 @@
 #include "diagnostic_session.hpp"
 #include "sdk_own_cache_codeproof.hpp"
 #include "sdk_own_cache_11_codeproof.hpp"
+#include "sdk_own_cache_35_codeproof.hpp"
 #include <cstdio>
 #include <atomic>
 #include <vector>
@@ -41,12 +42,32 @@ struct Log {
   if(!file)return;std::fprintf(file,"{\"phase\":\"%s\",\"okay\":%s,\"mode\":%u,\"reason\":\"%s\",\"pid\":%lu,\"creation\":%llu,\"a\":%lu,\"b\":%lu}\n",phase,okay?"true":"false",mode,reason,GetCurrentProcessId(),static_cast<unsigned long long>(DiagnosticsSession::Creation(GetCurrentProcess())),a,b);std::fflush(file);
  }
 };
-struct SdkLayout {DWORD timestamp,imageSize,table,key,begin,set,end;const char* hash;const SdkCodeProof* proofs;std::size_t proofCount;};
+inline constexpr DWORD gameImageBase = 0x400000;
+struct SdkOwnerLayout {
+    DWORD entryLengthOffset = 0x3c;
+    DWORD protectedHandleOffset = 0x68;
+    DWORD rowStride = 0x218;
+    DWORD moduleOffset = 4;
+    DWORD rowIdentityOffset = 0;
+    DWORD gameRowIdentity = 0;
+};
+struct SdkLayout {
+    DWORD timestamp, imageSize, table, key, begin, set, end;
+    const char* hash;
+    const SdkCodeProof* proofs;
+    std::size_t proofCount;
+    SdkOwnerLayout owner{};
+};
 inline constexpr SdkLayout sdk12{0x474ba865,0x9ad000,0x4acb18,0x4f10d4,0xdb736,0xdb86a,0xdb776,
  "447e2106fce0a529a26555db6aada35df28c7f1a7128385bc02211643abd8024",sdkCodeProofs,sizeof(sdkCodeProofs)/sizeof(*sdkCodeProofs)};
 inline constexpr SdkLayout sdk11{0x46b9227a,0x833000,0x3a1638,0x3f1b10,0xa632c,0xa6460,0xa636c,
  "218bbd03069ad20a0428584ff8d31dbfcce02c015141d1911be6944c6d5d840f",sdk11CodeProofs,sizeof(sdk11CodeProofs)/sizeof(*sdk11CodeProofs)};
-inline const SdkLayout* Layout(const char* hash){if(!hash)return nullptr;for(const auto* layout:{&sdk12,&sdk11})if(!std::strcmp(hash,layout->hash))return layout;return nullptr;}
+// 3.5.0092.0 has a larger protected table. Its owner rows store the
+// module pointer first and the image base where older rows carry a kind.
+inline constexpr SdkLayout sdk35{0x4e83c089,0xebe000,0x66e198,0x6716c0,0xf27c4,0xf28ff,0xf2806,
+ "ca15accbcd22c386872ef8bd901549fe6f3a069c2dfb8962603b44732f2a8983",sdk35CodeProofs,sizeof(sdk35CodeProofs)/sizeof(*sdk35CodeProofs),
+ {0x4c,0x88,0x214,0,4,gameImageBase}};
+inline const SdkLayout* Layout(const char* hash){if(!hash)return nullptr;for(const auto* layout:{&sdk12,&sdk11,&sdk35})if(!std::strcmp(hash,layout->hash))return layout;return nullptr;}
 inline bool SdkIdentity(Address& base,const SdkLayout** selected=nullptr){
  HMODULE module=GetModuleHandleW(L"xlive.dll");wchar_t path[MAX_PATH]{},windows[MAX_PATH]{};
  if(!module)return false;const DWORD n=GetModuleFileNameW(module,path,MAX_PATH),w=GetWindowsDirectoryW(windows,MAX_PATH);
@@ -87,18 +108,54 @@ inline bool ProtectedByte(Address sdk,DWORD handle,DWORD index,unsigned char& re
 }
 struct Owner {DWORD table=0,owner=0,array=0,count=0,module=0,cache=0,ranges=0,indices=0,sums=0,pageCount=0,rangeCount=0;};
 inline bool Resolve(Address sdk,Owner& out,const SdkLayout& layout=sdk12){
- Owner v;DWORD handle=0,offset=0,length=0,initialized=0;
- if(!U(sdk+layout.table,v.table)||!U(v.table,initialized)||initialized!=1||!U(v.table+0x68,handle)||!U(v.table+0xc,offset)||!U(v.table+0x3c,length)||length!=4||offset>4096)return false;
- unsigned char bytes[4]{};for(unsigned i=0;i<4;++i)if(!ProtectedByte(sdk,handle,offset+4+i,bytes[i],layout))return false;std::memcpy(&v.owner,bytes,4);
- DWORD valid=0;if(!U(v.owner,v.array)||!U(v.owner+8,v.count)||!v.count||v.count>64||!U(v.owner+0x10,valid)||!valid)return false;
- unsigned games=0;
- for(DWORD n=0;n<v.count;++n){DWORD kind=0,m=0,image=0;const Address row=Address(v.array)+n*0x218;
-  if(!U(row,kind)||!U(row+4,m)||!U(Address(m)+0x48,image))return false;
-  if(image==0x400000){if(kind||++games!=1)return false;v.module=m;}
- }
- if(games!=1)return false;v.cache=v.module+0x174;DWORD phase=0;
- if(!U(v.cache,v.ranges)||!U(v.cache+4,v.indices)||!U(v.cache+8,v.sums)||!U(v.cache+0x14,v.rangeCount)||!U(v.cache+0x18,v.pageCount)||!U(v.cache+0x20,phase)||phase||!v.rangeCount||v.rangeCount>128||!v.pageCount||v.pageCount>65536)return false;
- out=v;return true;
+    const auto& fields = layout.owner;
+    Owner state;
+    DWORD handle = 0, offset = 0, length = 0, initialized = 0;
+    if (!U(sdk + layout.table, state.table) ||
+        !U(state.table, initialized) || initialized != 1 ||
+        !U(state.table + fields.protectedHandleOffset, handle) ||
+        !U(state.table + 0xc, offset) || offset > 4096 ||
+        !U(state.table + fields.entryLengthOffset, length) || length != 4)
+        return false;
+
+    unsigned char bytes[4]{};
+    for (unsigned i = 0; i < sizeof(bytes); ++i) {
+        if (!ProtectedByte(sdk, handle, offset + 4 + i, bytes[i], layout))
+            return false;
+    }
+    std::memcpy(&state.owner, bytes, sizeof(bytes));
+    DWORD valid = 0;
+    if (!U(state.owner, state.array) || !U(state.owner + 8, state.count) ||
+        !state.count || state.count > 64 || !U(state.owner + 0x10, valid) || !valid)
+        return false;
+
+    unsigned games = 0;
+    for (DWORD n = 0; n < state.count; ++n) {
+        const Address row = Address(state.array) + n * fields.rowStride;
+        DWORD identity = 0, module = 0, image = 0;
+        if (!U(row + fields.rowIdentityOffset, identity) ||
+            !U(row + fields.moduleOffset, module) || !U(Address(module) + 0x48, image))
+            return false;
+        if (image == gameImageBase) {
+            if (identity != fields.gameRowIdentity || ++games != 1)
+                return false;
+            state.module = module;
+        }
+    }
+    if (games != 1)
+        return false;
+
+    state.cache = state.module + 0x174;
+    DWORD phase = 0;
+    if (!U(state.cache, state.ranges) || !U(state.cache + 4, state.indices) ||
+        !U(state.cache + 8, state.sums) || !U(state.cache + 0x14, state.rangeCount) ||
+        !U(state.cache + 0x18, state.pageCount) || !U(state.cache + 0x20, phase) ||
+        phase || !state.rangeCount || state.rangeCount > 128 ||
+        !state.pageCount || state.pageCount > 65536)
+        return false;
+
+    out = state;
+    return true;
 }
 struct Change {DWORD rva=0,index=0,before=0,after=0;};
 inline bool Prepare(const Owner& owner,const std::vector<KL1OwnedPatchAudit::Page>& pages,std::vector<Change>& changes){

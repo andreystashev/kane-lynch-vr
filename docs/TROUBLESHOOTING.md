@@ -6,6 +6,11 @@ Confirm the selected **kaneandlynch.exe** and headset connection in Settings. Co
 
 Steam editions need the original game installation and a working Steam client. Finish any Steam sign-in or update prompt, then try again. If Setup rejects the game's executable, report the edition and the displayed compatibility information; do not replace the game's EXE or xlive.dll to force it through the check.
 
+The Steam compatibility check recognizes the exact x86 GFWL library from
+Microsoft's 3.5.92.0 redistributable (file version 3.5.0092.0). If startup
+reports `unsupported_sdk_identity_or_code`, include the version and SHA-256
+of the loaded `xlive.dll` in your report.
+
 Keep the game window focused while playing. **F9** toggles the headset output; **F7** recenters the view.
 
 ## Black screen, loading crash or poor performance
